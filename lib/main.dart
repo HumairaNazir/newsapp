@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:topnewsapp/utilities/app_routes.dart';
+import 'package:topnewsapp/view/categories_screen.dart';
 import 'package:topnewsapp/view/home_screen.dart';
 import 'package:topnewsapp/view/main_screen.dart';
+import 'package:topnewsapp/view/news_detail_screen.dart';
 import 'package:topnewsapp/view/splash_screen.dart';
 
 void main() {
@@ -21,6 +23,10 @@ class MyApp extends StatelessWidget {
       routes: {
         splashScreenRoute: (context) => const SplashScreen(), //
         homeScreenRoute: (context) => const MainScreen(),
+        detailScreenRoute: (context) {
+          var i = ModalRoute.of(context)?.settings.arguments;
+          return NewsDetailScreen(article: i);
+        },
       },
       theme: ThemeData(
         // This is the theme of your application.

@@ -3,8 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ErrorMessageWidget extends StatelessWidget {
   final VoidCallback onRetry;
-
-  const ErrorMessageWidget({super.key, required this.onRetry});
+  final String title;
+  final String message;
+  const ErrorMessageWidget({
+    super.key,
+    required this.onRetry,
+    required this.title,
+    required this.message,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +21,7 @@ class ErrorMessageWidget extends StatelessWidget {
           const Icon(Icons.error_outline, color: Colors.red, size: 60),
           const SizedBox(height: 10),
           Text(
-            'Something went wrong!',
+            title,
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w600,
@@ -23,7 +29,7 @@ class ErrorMessageWidget extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            'Please check your internet connection\nand try again.',
+            message,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(fontSize: 14, color: Colors.grey[700]),
           ),
