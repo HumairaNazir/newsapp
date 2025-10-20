@@ -323,80 +323,91 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemCount: articles.length,
                           itemBuilder: (context, index) {
                             final article = articles[index];
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 15.0),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: CachedNetworkImage(
-                                      imageUrl: article.urlToImage ?? '',
-                                      fit: BoxFit.cover,
-                                      height: 100,
-                                      width: 120,
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                            child: SpinKitCircle(
-                                              color: Colors.blue,
-                                              size: 30,
-                                            ),
-                                          ),
-                                      errorWidget: (context, url, error) =>
-                                          const Icon(
-                                            Icons.error_outline,
-                                            color: Colors.red,
-                                            size: 40,
-                                          ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          article.title ?? '',
-                                          maxLines: 3,
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.black54,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Row(
-                                          children: [
-                                            Flexible(
-                                              fit: FlexFit.tight,
-                                              child: Text(
-                                                article.source?.name ?? '',
-                                                style: GoogleFonts.poppins(
-                                                  color: Colors.red,
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
+                            return InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  detailScreenRoute,
+                                  arguments: article,
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 15.0),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: CachedNetworkImage(
+                                        imageUrl: article.urlToImage ?? '',
+                                        fit: BoxFit.cover,
+                                        height: 100,
+                                        width: 120,
+                                        placeholder: (context, url) =>
+                                            const Center(
+                                              child: SpinKitCircle(
+                                                color: Colors.blue,
+                                                size: 30,
                                               ),
                                             ),
-                                            const SizedBox(width: 6),
-                                            if (article.publishedAt != null)
-                                              Text(
-                                                '• ${format.format(DateTime.parse(article.publishedAt!))}',
-                                                style: GoogleFonts.poppins(
-                                                  fontSize: 12,
-                                                  color: Colors.grey.shade700,
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
-                                              ),
-                                          ],
-                                        ),
-                                      ],
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(
+                                              Icons.error_outline,
+                                              color: Colors.red,
+                                              size: 40,
+                                            ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    const SizedBox(width: 10),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            article.title ?? '',
+                                            maxLines: 3,
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Flexible(
+                                                fit: FlexFit.tight,
+                                                child: Text(
+                                                  article.source?.name ?? '',
+                                                  style: GoogleFonts.poppins(
+                                                    color: Colors.red,
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 1,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 6),
+                                              if (article.publishedAt != null)
+                                                Text(
+                                                  '• ${format.format(DateTime.parse(article.publishedAt!))}',
+                                                  style: GoogleFonts.poppins(
+                                                    fontSize: 12,
+                                                    color: Colors.grey.shade700,
+                                                  ),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 1,
+                                                ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
