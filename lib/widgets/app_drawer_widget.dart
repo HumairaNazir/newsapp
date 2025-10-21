@@ -49,6 +49,20 @@ class AppDrawer extends StatelessWidget {
               // TODO: Add Privacy Policy page
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.dark_mode),
+            title: const Text('Dark Mode toggle'),
+            onTap: () {
+              // TODO: Add Privacy Policy page
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.contact_mail),
+            title: const Text('Contact Us'),
+            onTap: () {
+              // TODO: Add Privacy Policy page
+            },
+          ),
         ],
       ),
     );

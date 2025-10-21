@@ -59,4 +59,16 @@ class NewsRepository {
     final connectivityResult = await Connectivity().checkConnectivity();
     return connectivityResult != ConnectivityResult.none;
   }
+
+  Future<NewsChannelHeadlinesModel> searchNewsApi(String query) async {
+    final url =
+        'https://newsapi.org/v2/everything?q=$query&apiKey=2d673db3a97f4077b9b0b6c1f1e9a15a';
+
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      return NewsChannelHeadlinesModel.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load search results');
+    }
+  }
 }

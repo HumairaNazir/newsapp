@@ -17,4 +17,9 @@ class NewViewModel {
     final response = _repo.categoriesNewsApi(category);
     return response;
   }
+
+  Future<NewsChannelHeadlinesModel> searchNewsApi(String query) async {
+    final response = _repo.searchNewsApi(query);
+    return response;
+  }
 }
