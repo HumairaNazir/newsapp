@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
+import 'package:topnewsapp/widgets/error_message_widget.dart';
 import '../models/news_channel_headlines_model.dart';
 import '../view_model/news_view_model.dart';
 import '../utilities/app_routes.dart';
@@ -64,7 +65,13 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
                         child: SpinKitChasingDots(color: Colors.blue, size: 50),
                       );
                     } else if (snapshot.hasError) {
-                      return Center(child: Text('Error: ${snapshot.error}'));
+                      return Center(
+                        child: ErrorMessageWidget(
+                          onRetry: () {},
+                          title: 'Please check Internet Connection',
+                          message: 'Something went wronged',
+                        ),
+                      );
                     } else if (!snapshot.hasData ||
                         snapshot.data!.articles == null ||
                         snapshot.data!.articles!.isEmpty) {

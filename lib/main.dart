@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:topnewsapp/provider/theme_provider.dart';
 import 'package:topnewsapp/utilities/app_routes.dart';
-import 'package:topnewsapp/view/categories_screen.dart';
-import 'package:topnewsapp/view/home_screen.dart';
 import 'package:topnewsapp/view/main_screen.dart';
 import 'package:topnewsapp/view/news_detail_screen.dart';
 import 'package:topnewsapp/view/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,8 +21,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       title: 'Flutter Demo',
       initialRoute: splashScreenRoute,
       routes: {
@@ -28,10 +37,6 @@ class MyApp extends StatelessWidget {
           return NewsDetailScreen(article: i);
         },
       },
-      theme: ThemeData(
-        // This is the theme of your application.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
     );
   }
 }

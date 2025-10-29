@@ -8,6 +8,7 @@ import 'package:topnewsapp/models/news_channel_headlines_model.dart';
 import 'package:topnewsapp/models/catgegories_news_model.dart';
 import 'package:topnewsapp/utilities/app_routes.dart';
 import 'package:topnewsapp/view_model/news_view_model.dart';
+import 'package:topnewsapp/widgets/app_drawer_widget.dart';
 import '../widgets/error_message_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,50 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: Scaffold(
-        // ✅ Add a Drawer
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                decoration: const BoxDecoration(color: Colors.blue),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.white,
-                      child: Icon(Icons.person, size: 40, color: Colors.blue),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      'Hello, Humaira 👋',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ListTile(
-                leading: const Icon(Icons.home),
-                title: const Text('Home'),
-                onTap: () => Navigator.pop(context),
-              ),
-              ListTile(
-                leading: const Icon(Icons.category),
-                title: const Text('Categories'),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.settings),
-                title: const Text('Settings'),
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
+        drawer: AppDrawer(),
 
         // ✅ Main body
         appBar: AppBar(
@@ -126,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text('Al Jazeera'),
                 ),
               ],
-              icon: const Icon(Icons.more_vert, color: Colors.black),
+              icon: const Icon(Icons.more_vert),
             ),
           ],
         ),
@@ -369,7 +327,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                             style: GoogleFonts.poppins(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w700,
-                                              color: Colors.black54,
                                             ),
                                           ),
                                           const SizedBox(height: 10),
@@ -380,7 +337,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 child: Text(
                                                   article.source?.name ?? '',
                                                   style: GoogleFonts.poppins(
-                                                    color: Colors.red,
+                                                    color: Colors.grey,
                                                     fontSize: 13,
                                                     fontWeight: FontWeight.w500,
                                                   ),

@@ -147,7 +147,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                         article.title.toString(),
                                         maxLines: 3,
                                         style: GoogleFonts.poppins(
-                                          color: Colors.black54,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w700,
                                         ),
@@ -160,7 +159,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                             child: Text(
                                               article.source?.name ?? '',
                                               style: GoogleFonts.poppins(
-                                                color: Colors.red,
+                                                color: Colors.grey,
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w500,
                                               ),

@@ -23,10 +23,7 @@ class BottomNavBar extends StatelessWidget {
           icon: Icon(Icons.category),
           label: "Categories",
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.bookmark),
-          label: "Bookmarked",
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
       ],
     );
   }
