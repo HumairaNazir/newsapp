@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:topnewsapp/utilities/app_routes.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../provider/theme_provider.dart';
@@ -107,7 +108,10 @@ class _AppDrawerState extends State<AppDrawer> {
           ListTile(
             leading: const Icon(Icons.privacy_tip),
             title: const Text('Privacy Policy'),
-            onTap: _launchWebsite, // opens your website
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, privacyPolicyScreenRoute);
+            },
           ),
         ],
       ),

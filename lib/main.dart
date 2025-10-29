@@ -4,6 +4,7 @@ import 'package:topnewsapp/provider/theme_provider.dart';
 import 'package:topnewsapp/utilities/app_routes.dart';
 import 'package:topnewsapp/view/main_screen.dart';
 import 'package:topnewsapp/view/news_detail_screen.dart';
+import 'package:topnewsapp/view/privacy_policy_screen.dart';
 import 'package:topnewsapp/view/splash_screen.dart';
 
 void main() {
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           var i = ModalRoute.of(context)?.settings.arguments;
           return NewsDetailScreen(article: i);
         },
+        privacyPolicyScreenRoute: (context) => const PrivacyPolicyScreen(),
       },
     );
   }
